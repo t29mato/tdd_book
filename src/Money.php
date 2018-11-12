@@ -2,7 +2,7 @@
 
 namespace Money;
 
-abstract class Money
+class Money
 {
     protected $amount;
     protected $currency;
@@ -12,7 +12,7 @@ abstract class Money
         $this->currency = $currency;
     }
 
-    abstract function times(int $multiplier);
+    // abstract function times(int $multiplier);
     public function currency(): string
     {
         return $this->currency;
@@ -21,16 +21,21 @@ abstract class Money
     public function equals(Money $money)
     {
         return $this->amount === $money->amount
-            && get_class($this) == get_class($money);
+            && $this->currency == $money->currency;
+    }
+
+    public function times(int $multiplier): Money
+    {
+        return new Money($this->amount * $multiplier, $this->currency);
     }
 
     public static function dollar(int $amount): Money
     {
-        return new Dollar($amount, "USD");
+        return new Money($amount, "USD");
     }
 
     public static function franc(int $amount): Money
     {
-        return new Franc($amount, "CHF");
+        return new Money($amount, "CHF");
     }
 }

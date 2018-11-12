@@ -19,7 +19,8 @@ use PHPUnit\Framework\TestCase;
  * [o] equalsの一般化
  * [ ] timeszの一般化
  * [o] FrancとDollarを比較する
- * [ ] 通過の概念
+ * [o] 通貨の概念
+ * [ ] testFrancMultiplicationを削除する?
  */
 
 class MoneyTest extends TestCase
@@ -44,5 +45,8 @@ class MoneyTest extends TestCase
     public function testCurrency() {
         $this->assertEquals("USD", Money::dollar(1)->currency());
         $this->assertEquals("CHF", Money::franc(1)->currency());
+    }
+    public function testDifferentClassEquality() {
+        $this->assertTrue((new Money(10, "CHF"))->equals(new Franc(10, "CHF")));
     }
 }
