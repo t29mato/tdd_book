@@ -17,6 +17,8 @@ use PHPUnit\Framework\TestCase;
  * [ ] DollarとFrancの重複
  * [ ] equalsの一般化
  * [ ] timeszの一般化
+ * [o] FrancとDollarを比較する
+ * [ ] 通過の概念
  */
 
 class MoneyTest extends TestCase
@@ -31,6 +33,7 @@ class MoneyTest extends TestCase
         $this->assertFalse((new Dollar(5))->equals(new Dollar(6)));
         $this->assertTrue((new Franc(5))->equals(new Franc(5)));
         $this->assertFalse((new Franc(5))->equals(new Franc(6)));
+        $this->assertFalse((new Dollar(5))->equals(new Franc(5)));
     }
     public function testFrancMultiplication() {
         $five = new Franc(5);
