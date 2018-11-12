@@ -12,7 +12,6 @@ class Money
         $this->currency = $currency;
     }
 
-    // abstract function times(int $multiplier);
     public function currency(): string
     {
         return $this->currency;
