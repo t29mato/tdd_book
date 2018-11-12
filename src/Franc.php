@@ -2,7 +2,7 @@
 
 namespace Money;
 
-class Dollar
+class Franc
 {
     private $amount;
     public function __construct(int $amount)
@@ -10,12 +10,12 @@ class Dollar
         $this->amount = $amount;
     }
 
-    public function times(int $multiplier): Dollar
+    public function times(int $multiplier): Franc
     {
-        return new Dollar($this->amount * $multiplier);
+        return new Franc($this->amount * $multiplier);
     }
 
-    public function equals(Dollar $money)
+    public function equals(Franc $money)
     {
         return $this->amount === $money->amount;
     }
