@@ -1,0 +1,12 @@
+{
+    "name": "mato/tdd-book",
+    "require": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "authors": [
+        {
+            "name": "mato",
+            "email": "tomoya.matou@gmail.com"
+        }
+    ]
+}
