@@ -2,7 +2,7 @@
 
 namespace Money;
 
-class Money
+class Money extends Expression
 {
     protected $amount;
     protected $currency;
@@ -21,6 +21,11 @@ class Money
     {
         return $this->amount === $money->amount
             && $this->currency == $money->currency;
+    }
+
+    public function plus(Money $addend): Expression
+    {
+        return new Expression($this->amount + $addend->amount, $this->currency);
     }
 
     public function times(int $multiplier): Money

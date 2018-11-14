@@ -21,6 +21,8 @@ use PHPUnit\Framework\TestCase;
  * [o] FrancとDollarを比較する
  * [o] 通貨の概念
  * [ ] testFrancMultiplicationを削除する?
+ * [ ] $5 + 10CHF = $10
+ * [ ] $5 + $5 = $10
  */
 
 class MoneyTest extends TestCase
@@ -38,5 +40,12 @@ class MoneyTest extends TestCase
     public function testCurrency() {
         $this->assertEquals("USD", Money::dollar(1)->currency());
         $this->assertEquals("CHF", Money::franc(1)->currency());
+    }
+    public function testSimpleAddition() {
+        $five = Money::dollar(5);
+        $sum = $five->plus($five);
+        $bank = new Bank();
+        $reduced = $bank->reduce($sum, "USD");
+        $this->assertEquals(Money::dollar(10), $reduced);
     }
 }
